@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${groupId}</groupId>
+	<artifactId>${artifactId}</artifactId>
+	<packaging>jar</packaging>
+	<version>${version}</version>
+	<name>${maven.project.name}</name>
+	<properties>
+		<maven.project.name>${artifactId}</maven.project.name>
+		<maven.project.compile.version>1.7</maven.project.compile.version>
+		<maven.project.spring.version>4.1.6.RELEASE</maven.project.spring.version>
+		<maven.project.build.sourceEncoding>UTF-8</maven.project.build.sourceEncoding>
+	</properties>
+	<repositories>
+		<repository>
+			<id>releases</id>
+			<name>Central Code Repository</name>
+			<url>http://${nexus-address}/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>snapshots</id>
+			<name>snapshots Code Repository</name>
+			<url>http://${nexus-address}/nexus/content/groups/public-snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Internal Release</name>
+			<url>http://${nexus-address}/nexus/content/repositories/repository/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Internal Snapshots</name>
+			<url>http://${nexus-address}/nexus/content/repositories/repositories.snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<dependencies>
+		<!-- For Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${maven.project.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${maven.project.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${maven.project.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${maven.project.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${maven.project.name}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>${maven.project.compile.version}</source>
+					<target>${maven.project.compile.version}</target>
+					<encoding>${maven.project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

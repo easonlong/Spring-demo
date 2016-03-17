@@ -1,0 +1,15 @@
+<archetype-descriptor name="spring">
+	<fileSets>
+		<fileSet filtered="true">
+			<directory>src</directory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+	<requiredProperties>
+		<requiredProperty key="nexus-address">
+			<defaultValue>127.0.0.1:8081</defaultValue>
+		</requiredProperty>
+	</requiredProperties>
+</archetype-descriptor>
