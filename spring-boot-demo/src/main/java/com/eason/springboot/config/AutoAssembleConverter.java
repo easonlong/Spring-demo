@@ -1,6 +1,7 @@
 package com.eason.springboot.config;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.converter.HttpMessageNotWritableException;
@@ -17,7 +18,7 @@ import com.eason.springboot.response.SuccessResponse;
 public class AutoAssembleConverter extends MappingJackson2HttpMessageConverter {
 	
 	@Override
-	protected void writeInternal(Object object, HttpOutputMessage outputMessage) throws IOException, HttpMessageNotWritableException {
-		super.writeInternal(object.getClass().isAssignableFrom(SuccessResponse.class) ? object : new SuccessResponse(object), outputMessage);
+	protected void writeInternal(Object object, Type type, HttpOutputMessage outputMessage) throws IOException, HttpMessageNotWritableException {
+		super.writeInternal(object.getClass().isAssignableFrom(SuccessResponse.class) ? object : new SuccessResponse(object), SuccessResponse.class, outputMessage);
 	}
 }

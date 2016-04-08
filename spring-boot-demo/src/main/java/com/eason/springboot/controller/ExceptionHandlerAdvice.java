@@ -5,13 +5,11 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
 import com.eason.springboot.response.ExceptionResponse;
 import com.eason.springboot.response.Response;
-import com.eason.springboot.response.SuccessResponse;
 
 @ControllerAdvice
 public class ExceptionHandlerAdvice {
@@ -34,11 +32,5 @@ public class ExceptionHandlerAdvice {
 	@ResponseBody
 	public Response exception(Exception e, WebRequest request) {
 		return new ExceptionResponse(e.getMessage());
-	}
-	
-	@ModelAttribute
-	@ResponseBody
-	public Response response(Object response){
-		return new SuccessResponse(response);
 	}
 }
