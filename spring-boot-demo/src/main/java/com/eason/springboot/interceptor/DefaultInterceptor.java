@@ -22,6 +22,9 @@ public class DefaultInterceptor extends HandlerInterceptorAdapter {
 		} else {
 			LOGGER.info("DefaultInterceptor off");
 		}
+		if(LOGGER.isDebugEnabled()){
+			LOGGER.debug("debug is on");
+		}
 		return true;
 	}
 }
