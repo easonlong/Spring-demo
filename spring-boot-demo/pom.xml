@@ -16,6 +16,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<start-class>com.eason.springboot.RestApp</start-class>
+		<java.version>1.7</java.version>
 	</properties>
 
 	<dependencies>
@@ -42,4 +44,12 @@
 			<artifactId>spring-boot-starter-log4j</artifactId>
 		</dependency>
 	</dependencies>
+	<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
 </project>
